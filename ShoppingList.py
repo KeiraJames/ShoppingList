@@ -2,8 +2,12 @@ from LinkedList import LinkedList
 
 
 def prompt():
-    user_input = int(input("Enter your choice: "))
-    return user_input
+    try:
+        user_input = input("Enter your choice: ")
+        user_input = int(user_input)
+        return user_input
+    except ValueError:
+        print("Invalid input. Please enter a number.")
 
 def add_to_list(ll):
     item = input("Enter item to add: ")
@@ -40,7 +44,8 @@ while user_input != 4:
         view_list(ll)
         user_input = prompt()
     else:
-        print("Number invalid, try again.")
+        if isinstance(user_input, int):
+            print("Number invalid, try again.")
         user_input = prompt()
 
 print("Thank you for using your shopping list!")
